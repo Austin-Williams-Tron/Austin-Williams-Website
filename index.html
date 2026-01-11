@@ -32,36 +32,52 @@ body {
     transition: background 0.4s, color 0.4s;
 }
 
-nav {
+/* NAVBAR */
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
     background: #050505;
-    padding: 15px;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
     transition: background 0.4s, box-shadow 0.4s;
 }
 
-nav.light-mode {
-    background: #ddd;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+#navbar.light-mode {
+    background:#ddd;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
 }
 
-nav ul { display:flex; justify-content:center; list-style:none; gap:15px; }
-nav ul li a {
+.nav-left .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-shadow:0 0 5px rgba(0,229,255,0.7);
+}
+
+.nav-center {
+    display:flex;
+    list-style:none;
+    gap:15px;
+    justify-content:center;
+    flex:1;
+}
+
+.nav-center li a {
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
-    text-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+    font-weight:bold;
+    text-shadow:0 0 8px rgba(0,229,255,0.8);
     transition: color 0.3s;
 }
-nav.light-mode ul li a { text-shadow: none; }
-nav ul li a:hover { color:#fff; }
+
+.nav-center li a:hover { color:#fff; }
+
+.nav-right { display:flex; align-items:center; }
 
 .toggle-btn {
     cursor:pointer;
@@ -76,6 +92,7 @@ nav ul li a:hover { color:#fff; }
 .toggle-btn:hover { transform: rotate(20deg); color: #fff; }
 .toggle-btn:focus { outline:none; }
 
+/* HEADER */
 header {
     min-height:100vh;
     background: radial-gradient(circle,#001111,#000);
@@ -92,6 +109,7 @@ body.light-mode header { background: radial-gradient(circle,#e0f0ff,#fff); color
 
 header h1 { font-size:3rem; text-shadow:0 0 20px var(--primary-color); }
 
+/* SECTIONS */
 section {
     padding: 100px 20px;
     max-width: 1000px;
@@ -105,12 +123,13 @@ section {
 }
 
 section.visible { opacity:1; transform: translateY(0); }
-section:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 0 25px rgba(0,229,255,0.4),0 0 60px rgba(0,229,255,0.25); }
+section:hover { transform: translateY(-8px) scale(1.01); box-shadow:0 0 25px rgba(0,229,255,0.4),0 0 60px rgba(0,229,255,0.25); }
 
 h2,h3,h4 { color: var(--primary-color); text-shadow:0 0 10px rgba(0,229,255,0.7); }
 h2 { border-bottom:2px solid var(--primary-color); padding-bottom:8px; margin-bottom:20px; }
 p,li { color: var(--text-color); }
 
+/* SOCIAL ICONS */
 .social-icons { margin-top:25px; display:flex; justify-content:center; gap:20px; }
 .icon-circle {
     width:55px; height:55px; border-radius:50%;
@@ -122,16 +141,19 @@ p,li { color: var(--text-color); }
 }
 .icon-circle:hover { transform: scale(1.15); color:#fff; box-shadow:0 0 25px rgba(0,229,255,0.9),0 0 50px rgba(0,229,255,0.6); }
 
-.projects-wrapper {
-    display: flex;
-    flex-direction: column; /* stack projects vertically */
-    gap: 80px; /* space between each project */
+/* PROJECTS */
+.projects-wrapper { display:flex; flex-direction:column; gap:80px; } /* vertical spacing between projects */
+.projects-wrapper .project-container {
+    display:flex;
+    gap:30px; /* horizontal gap between image & text */
+    align-items:flex-start;
+    transition: all 0.8s ease;
 }
-.projects-wrapper .project-container { display:flex; gap:30px; align-items:flex-start; transition: all 0.8s ease; }
 .projects-wrapper .project-container img { width:300px; border-radius:10px; box-shadow:0 0 15px rgba(0,229,255,0.4); transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .projects-wrapper .project-container img:hover { transform: scale(1.1); box-shadow:0 0 35px rgba(0,229,255,0.9); }
 .project-text { flex:1; }
 
+/* AWARDS */
 .awards-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:30px; margin-top:30px; }
 .award-card {
     background:#000; border:2px solid var(--primary-color); border-radius:12px;
@@ -142,10 +164,12 @@ p,li { color: var(--text-color); }
 .award-card:hover { transform: translateY(-10px) scale(1.05); box-shadow:0 0 30px rgba(0,229,255,0.9),0 0 60px rgba(0,229,255,0.6); }
 .award-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px; box-shadow:0 0 12px rgba(0,229,255,0.4); }
 
+/* FOOTER */
 footer { background:#050505; text-align:center; padding:20px; color:var(--primary-color); box-shadow:0 0 15px rgba(0,229,255,0.3); transition: background 0.4s, color 0.4s; }
 body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow:0 0 15px rgba(0,0,0,0.1); }
 
-@media(max-width:768px) {
+/* RESPONSIVE */
+@media(max-width:768px){
     .projects-wrapper .project-container { flex-direction:column; align-items:center; }
     .projects-wrapper .project-container img { width:100%; max-width:400px; }
     header h1 { font-size:2.2rem; }
@@ -156,13 +180,16 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
 <body>
 
 <nav id="navbar">
-    <ul>
+    <div class="nav-left"><span class="logo">AW</span></div>
+    <ul class="nav-center">
         <li><a href="#resume">Resume</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#awards">Awards</a></li>
         <li><a href="#certifications">Certifications</a></li>
     </ul>
-    <button class="toggle-btn" id="themeToggle" aria-label="Toggle Theme">🌙</button>
+    <div class="nav-right">
+        <button class="toggle-btn" id="themeToggle">🌙</button>
+    </div>
 </nav>
 
 <header id="home">
@@ -170,12 +197,8 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
         <h1>Austin Williams</h1>
         <p>Welcome! I am a mechatronics engineer that loves solving problems to help others.</p>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/austin-williams-mechatronics/" target="_blank" class="icon-circle" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="mailto:a55willi@uwaterloo.ca" class="icon-circle" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
+            <a href="https://www.linkedin.com/in/austin-williams-mechatronics/" target="_blank" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:a55willi@uwaterloo.ca" class="icon-circle"><i class="fas fa-envelope"></i></a>
         </div>
     </div>
 </header>
@@ -190,7 +213,7 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
             Your browser does not support PDFs. <a href="Austin_Williams_Resume_2.pdf" target="_blank">Click here to download</a>.
         </iframe>
         <div style="margin-top:15px;">
-            <a href="Austin_Williams_Resume.pdf" target="_blank" style="background:var(--primary-color); color:#fff; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">Open/Download Resume</a>
+            <a href="Austin_Williams_Resume_2.pdf" target="_blank" style="background:var(--primary-color); color:#fff; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">Open/Download Resume</a>
         </div>
     </div>
 </section>
