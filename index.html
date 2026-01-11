@@ -142,16 +142,50 @@ p,li { color: var(--text-color); }
 .icon-circle:hover { transform: scale(1.15); color:#fff; box-shadow:0 0 25px rgba(0,229,255,0.9),0 0 50px rgba(0,229,255,0.6); }
 
 /* PROJECTS */
-.projects-wrapper { display:flex; flex-direction:column; gap:80px; } /* vertical spacing between projects */
 .projects-wrapper .project-container {
-    display:flex;
-    gap:30px; /* horizontal gap between image & text */
-    align-items:flex-start;
-    transition: all 0.8s ease;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    padding: 15px;
+    background: #000; /* same as award-card */
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,229,255,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s, color 0.4s;
 }
-.projects-wrapper .project-container img { width:300px; border-radius:10px; box-shadow:0 0 15px rgba(0,229,255,0.4); transition: transform 0.4s ease, box-shadow 0.4s ease; }
-.projects-wrapper .project-container img:hover { transform: scale(1.1); box-shadow:0 0 35px rgba(0,229,255,0.9); }
-.project-text { flex:1; }
+
+.projects-wrapper .project-container:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0,229,255,0.9), 0 0 60px rgba(0,229,255,0.6);
+}
+
+.projects-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* space BETWEEN project cards */
+}
+
+.projects-wrapper .project-container img {
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,229,255,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.projects-wrapper .project-container img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 35px rgba(0,229,255,0.9);
+}
+
+.project-text h3, .project-text h4 {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0,229,255,0.7);
+}
+
+.project-text p, .project-text ul, .project-text li {
+    color: var(--text-color);
+}
+
 
 /* AWARDS */
 .awards-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:30px; margin-top:30px; }
@@ -220,53 +254,48 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
 
 <section id="projects">
     <h2>Projects</h2>
+
     <div class="projects-wrapper">
+
         <div class="project-container">
             <img src="gantry.png" alt="Toddler Drawing Gantry System" loading="lazy">
             <div class="project-text">
                 <h3>Toddler Drawing Gantry System | VexIQ, C++</h3>
                 <p>September 2025 – December 2025</p>
                 <ul>
-                    <li>Designed and built a 2-axis gantry system using VEX components to control precise pen motion.</li>
-                    <li>Programmed coordinated motor control in C++ to accurately draw predefined geometric shapes.</li>
-                    <li>Incorporated safety-focused design features for toddler use while maintaining function.</li>
+                    <li>Designed and built a 2-axis gantry system.</li>
+                    <li>Programmed coordinated motor control in C++.</li>
+                    <li>Incorporated safety-focused design features.</li>
                 </ul>
             </div>
         </div>
-    </div>
-		
-		<div class="project-container">
+
+        <div class="project-container">
             <img src="robotcar.png" alt="Bluetooth-Controlled Robot Car" loading="lazy">
             <div class="project-text">
                 <h3>Bluetooth-Controlled Robot Car</h3>
-                <p>Designed and developed a Bluetooth-controlled robot car using Arduino, integrating mechanical assembly, hardware wiring, and mobile app control.</p>
-                <h4>Mechanical Skills</h4>
-                <ul><li>Built and assembled the robot’s chassis</li></ul>
-                <h4>Electrical & Hardware Integration</h4>
+                <p>Arduino + Mobile App</p>
                 <ul>
-                    <li>Wired connections between motor driver, Arduino, and wheels</li>
-                    <li>Integrated the HC-05 Bluetooth module with Arduino hardware</li>
-                </ul>
-                <h4>Communication & Connectivity</h4>
-                <ul><li>Configured Bluetooth pairing between smartphone and HC-05 module</li></ul>
-                <h4>Programming & Software Development</h4>
-                <ul>
-                    <li>Wrote Arduino code to control motor outputs</li>
-                    <li>Designed and developed a mobile app for wireless robot control</li>
+                    <li>Built and assembled the chassis.</li>
+                    <li>Integrated HC-05 Bluetooth module.</li>
+                    <li>Developed mobile control app.</li>
                 </ul>
             </div>
         </div>
-        
+
+    </div>
 </section>
+
+
 
 <section id="awards">
     <h2>Awards</h2>
     <div class="awards-grid">
-        <div class="award-card"><img src="award1.png" alt="Entrance Scholarship"><h3>Entrance Scholarship</h3><p>President’s Scholarship of Distinction (2025)</p></div>
-        <div class="award-card"><img src="award2.png" alt="Governor General’s Medal"><h3>Governor General’s Academic Medal</h3><p>Top Average in Grade 12 (2025)</p></div>
-        <div class="award-card"><img src="award3.png" alt="Lieutenant Governor Award"><h3>Lieutenant Governor’s Volunteer Award</h3><p>Most Volunteer Hours (2025)</p></div>
-        <div class="award-card"><img src="award4.png" alt="Belleville Police Award"><h3>The Belleville Police Award</h3><p>Promoting Community Safety (2025)</p></div>
-        <div class="award-card"><img src="award5.png" alt="Duke of Edinburgh Award"><h3>Duke of Edinburgh Gold Award</h3><p>Completed Program (2024)</p></div>
+        <div class="award-card"><img src="award1.png" alt="not yet uploaded"><h3>Entrance Scholarship</h3><p>President’s Scholarship of Distinction (2025)</p></div>
+        <div class="award-card"><img src="award2.png" alt="not yet uploaded"><h3>Governor General’s Academic Medal</h3><p>Top Average in Grade 12 (2025)</p></div>
+        <div class="award-card"><img src="award3.png" alt="not yet uploaded"><h3>Lieutenant Governor’s Volunteer Award</h3><p>Most Volunteer Hours (2025)</p></div>
+        <div class="award-card"><img src="award4.png" alt="not yet uploaded"><h3>The Belleville Police Award</h3><p>Promoting Community Safety (2025)</p></div>
+        <div class="award-card"><img src="award5.png" alt="not yet uploaded"><h3>Duke of Edinburgh Gold Award</h3><p>Completed Program (2024)</p></div>
     </div>
 </section>
 
@@ -274,14 +303,24 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
     <h2>Certifications</h2>
     <div class="awards-grid">
         <div class="award-card">
-            <img src="google_cloud.png" alt="Google Cloud Certification">
-            <h3>Google Cloud Certification</h3>
-            <p>Completed Cloud Fundamentals (2025)</p>
+            <img src="placeholder.png" alt="not yet uploaded">
+            <h3>Clean Sport Certification</h3>
+            <p>CCES (2025)</p>
         </div>
         <div class="award-card">
-            <img src="coursera_fullstack.png" alt="Coursera Full Stack Certificate">
-            <h3>Full Stack Development Certificate</h3>
-            <p>Coursera – Web Development (2024)</p>
+            <img src="placeholder.png" alt="not yet uploaded">
+            <h3>National Lifeguard Certification</h3>
+            <p>City of Belleville Aquatics (2024)</p>
+        </div>
+        <div class="award-card">
+            <img src="placeholder.png" alt="not yet uploaded">
+            <h3>PADI Openwater Diver</h3>
+            <p>PADI Scuba (2025)</p>
+        </div>
+        <div class="award-card">
+            <img src="placeholder.png" alt="not yet uploaded">
+            <h3>Lean Six Sigma Yellow Belt</h3>
+            <p>Six Sigma Global Institute (2024)</p>
         </div>
     </div>
 </section>
