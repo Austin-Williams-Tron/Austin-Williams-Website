@@ -122,6 +122,11 @@ p,li { color: var(--text-color); }
 }
 .icon-circle:hover { transform: scale(1.15); color:#fff; box-shadow:0 0 25px rgba(0,229,255,0.9),0 0 50px rgba(0,229,255,0.6); }
 
+.projects-wrapper {
+    display: flex;
+    flex-direction: column; /* stack projects vertically */
+    gap: 80px; /* space between each project */
+}
 .projects-wrapper .project-container { display:flex; gap:30px; align-items:flex-start; transition: all 0.8s ease; }
 .projects-wrapper .project-container img { width:300px; border-radius:10px; box-shadow:0 0 15px rgba(0,229,255,0.4); transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .projects-wrapper .project-container img:hover { transform: scale(1.1); box-shadow:0 0 35px rgba(0,229,255,0.9); }
