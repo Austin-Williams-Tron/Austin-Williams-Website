@@ -1,289 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Austin Williams</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Austin Williams – Mechatronics Engineer">
+<title>Austin Williams – Welcome</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        /* CSS Variables for light/dark mode */
-        :root {
-            --primary-color: #00e5ff;
-            --bg-color: #000;
-            --card-bg: rgba(0,0,0,0.85);
-            --text-color: #b3f7ff;
-        }
+<style>
+:root {
+    --primary-color: #00e5ff;
+    --bg-color: #000;
+    --card-bg: rgba(0,0,0,0.85);
+    --text-color: #b3f7ff;
+}
 
-        body.light-mode {
-            --primary-color: #0077cc;
-            --bg-color: #f5f5f5;
-            --card-bg: #ffffff;
-            --text-color: #333;
-        }
+body.light-mode {
+    --primary-color: #0077cc;
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --text-color: #333;
+}
 
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-color);
-            color: var(--primary-color);
-            line-height: 1.6;
-            transition: background 0.4s, color 0.4s;
-        }
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--primary-color);
+    line-height: 1.6;
+    transition: background 0.4s, color 0.4s;
+}
 
-        nav {
-            background: #050505;
-            padding: 15px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            transition: background 0.4s;
-        }
+nav {
+    background: #050505;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: background 0.4s, box-shadow 0.4s;
+}
 
-        nav.light-mode {
-            background: #ddd;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
+nav.light-mode {
+    background: #ddd;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 15px;
-        }
+nav ul { display:flex; justify-content:center; list-style:none; gap:15px; }
+nav ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+    transition: color 0.3s;
+}
+nav.light-mode ul li a { text-shadow: none; }
+nav ul li a:hover { color:#fff; }
 
-        nav ul li a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            text-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
-            transition: color 0.3s;
-        }
+.toggle-btn {
+    cursor:pointer;
+    background:none;
+    border:none;
+    color: var(--primary-color);
+    font-size:1.2rem;
+    border-radius:6px;
+    font-weight:bold;
+    transition: transform 0.5s ease, color 0.3s;
+}
+.toggle-btn:hover { transform: rotate(20deg); color: #fff; }
+.toggle-btn:focus { outline:none; }
 
-        nav.light-mode ul li a {
-            text-shadow: none;
-        }
+header {
+    min-height:100vh;
+    background: radial-gradient(circle,#001111,#000);
+    color: var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 20px;
+    transition: background 0.4s, color 0.4s;
+}
 
-        nav ul li a:hover {
-            color: #fff;
-        }
+body.light-mode header { background: radial-gradient(circle,#e0f0ff,#fff); color: var(--primary-color); }
 
-        .toggle-btn {
-            cursor: pointer;
-            background: var(--primary-color);
-            border: none;
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
+header h1 { font-size:3rem; text-shadow:0 0 20px var(--primary-color); }
 
-        .toggle-btn:hover {
-            background: #fff;
-            color: var(--primary-color);
-        }
+section {
+    padding: 100px 20px;
+    max-width: 1000px;
+    margin: 50px auto;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s, color 0.4s, opacity 0.6s;
+    opacity:0;
+    transform: translateY(40px);
+}
 
-        header {
-            min-height: 100vh;
-            background: radial-gradient(circle, #001111, #000);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-            transition: background 0.4s, color 0.4s;
-        }
+section.visible { opacity:1; transform: translateY(0); }
+section:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 0 25px rgba(0,229,255,0.4),0 0 60px rgba(0,229,255,0.25); }
 
-        body.light-mode header {
-            background: radial-gradient(circle, #e0f0ff, #fff);
-            color: var(--primary-color);
-        }
+h2,h3,h4 { color: var(--primary-color); text-shadow:0 0 10px rgba(0,229,255,0.7); }
+h2 { border-bottom:2px solid var(--primary-color); padding-bottom:8px; margin-bottom:20px; }
+p,li { color: var(--text-color); }
 
-        header h1 {
-            font-size: 3rem;
-            text-shadow: 0 0 20px var(--primary-color);
-        }
+.social-icons { margin-top:25px; display:flex; justify-content:center; gap:20px; }
+.icon-circle {
+    width:55px; height:55px; border-radius:50%;
+    background:#000; display:flex; align-items:center; justify-content:center;
+    color:var(--primary-color); font-size:24px; text-decoration:none;
+    border:2px solid var(--primary-color);
+    box-shadow:0 0 15px rgba(0,229,255,0.5);
+    transition: all 0.4s ease;
+}
+.icon-circle:hover { transform: scale(1.15); color:#fff; box-shadow:0 0 25px rgba(0,229,255,0.9),0 0 50px rgba(0,229,255,0.6); }
 
-        section {
-            padding: 100px 20px;
-            max-width: 1000px;
-            margin: 50px auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s, color 0.4s;
-        }
+.projects-wrapper .project-container { display:flex; gap:30px; align-items:flex-start; transition: all 0.8s ease; }
+.projects-wrapper .project-container img { width:300px; border-radius:10px; box-shadow:0 0 15px rgba(0,229,255,0.4); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.projects-wrapper .project-container img:hover { transform: scale(1.1); box-shadow:0 0 35px rgba(0,229,255,0.9); }
+.project-text { flex:1; }
 
-        section:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4), 0 0 60px rgba(0, 229, 255, 0.25);
-        }
+.awards-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:30px; margin-top:30px; }
+.award-card {
+    background:#000; border:2px solid var(--primary-color); border-radius:12px;
+    padding:15px; text-align:center;
+    box-shadow:0 0 20px rgba(0,229,255,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s, color 0.4s;
+}
+.award-card:hover { transform: translateY(-10px) scale(1.05); box-shadow:0 0 30px rgba(0,229,255,0.9),0 0 60px rgba(0,229,255,0.6); }
+.award-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px; box-shadow:0 0 12px rgba(0,229,255,0.4); }
 
-        h2, h3, h4 {
-            color: var(--primary-color);
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
-        }
+footer { background:#050505; text-align:center; padding:20px; color:var(--primary-color); box-shadow:0 0 15px rgba(0,229,255,0.3); transition: background 0.4s, color 0.4s; }
+body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow:0 0 15px rgba(0,0,0,0.1); }
 
-        h2 {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-        }
-
-        p, li {
-            color: var(--text-color);
-        }
-
-        .social-icons {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .icon-circle {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 24px;
-            text-decoration: none;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-            transition: all 0.4s ease;
-        }
-
-        .icon-circle:hover {
-            transform: scale(1.15);
-            color: #fff;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.9), 0 0 50px rgba(0, 229, 255, 0.6);
-        }
-
-        /* Projects */
-        .projects-wrapper .project-container {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
-        }
-
-        .projects-wrapper .project-container.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .projects-wrapper .project-container + .project-container {
-            margin-top: 60px; /* space between projects */
-        }
-
-        .project-image {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .project-image:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 35px rgba(0, 229, 255, 0.9);
-        }
-
-        .project-text {
-            flex: 1;
-        }
-
-        /* Awards */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .award-card {
-            background: #000;
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s, color 0.4s;
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        .award-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .award-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
-        }
-
-        .award-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.9), 0 0 60px rgba(0, 229, 255, 0.6);
-        }
-
-        footer {
-            background: #050505;
-            text-align: center;
-            padding: 20px;
-            color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
-            transition: background 0.4s, color 0.4s;
-        }
-
-        body.light-mode footer {
-            background: #ddd;
-            color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .projects-wrapper .project-container {
-                flex-direction: column;
-                align-items: center;
-                transform: translateY(40px);
-            }
-
-            .project-image {
-                width: 100%;
-                max-width: 400px;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+@media(max-width:768px) {
+    .projects-wrapper .project-container { flex-direction:column; align-items:center; }
+    .projects-wrapper .project-container img { width:100%; max-width:400px; }
+    header h1 { font-size:2.2rem; }
+}
+</style>
 </head>
+
 <body>
 
 <nav id="navbar">
@@ -293,19 +157,18 @@
         <li><a href="#awards">Awards</a></li>
         <li><a href="#certifications">Certifications</a></li>
     </ul>
-    <button class="toggle-btn" id="themeToggle">Toggle Theme</button>
+    <button class="toggle-btn" id="themeToggle" aria-label="Toggle Theme">🌙</button>
 </nav>
 
-<header>
+<header id="home">
     <div>
         <h1>Austin Williams</h1>
         <p>Welcome! I am a mechatronics engineer that loves solving problems to help others.</p>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/austin-williams-mechatronics/" 
-               target="_blank" class="icon-circle">
-               <i class="fab fa-linkedin-in"></i>
+            <a href="https://www.linkedin.com/in/austin-williams-mechatronics/" target="_blank" class="icon-circle" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="mailto:a55willi@uwaterloo.ca" class="icon-circle">
+            <a href="mailto:a55willi@uwaterloo.ca" class="icon-circle" aria-label="Email">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
@@ -316,35 +179,22 @@
 <section id="resume">
     <h2>Resume</h2>
     <p>Brief overview of my education, skills, and experiences.</p>
-
-    <!-- Resume Preview -->
     <div style="margin-top:20px; text-align:center;">
         <h3>Preview</h3>
-        <iframe src="Austin_Williams_Resume (2).pdf" 
-                width="80%" 
-                height="500px" 
-                style="border:2px solid var(--primary-color); border-radius:8px;">
-            Your browser does not support PDFs. 
-            <a href="Austin_Williams_Resume.pdf" target="_blank">Click here to download</a>.
+        <iframe src="Austin_Williams_Resume_2.pdf" width="80%" height="500px" style="border:2px solid var(--primary-color); border-radius:8px;" loading="lazy">
+            Your browser does not support PDFs. <a href="Austin_Williams_Resume_2.pdf" target="_blank">Click here to download</a>.
         </iframe>
-
         <div style="margin-top:15px;">
-            <a href="Austin_Williams_Resume.pdf" target="_blank" 
-               style="background:var(--primary-color); color:#fff; padding:10px 20px; 
-                      border-radius:8px; text-decoration:none; font-weight:bold;">
-               Open/Download Resume
-            </a>
+            <a href="Austin_Williams_Resume_2.pdf" target="_blank" style="background:var(--primary-color); color:#fff; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">Open/Download Resume</a>
         </div>
     </div>
 </section>
 
-
 <section id="projects">
     <h2>Projects</h2>
     <div class="projects-wrapper">
-        <!-- Existing Robot Car project -->
         <div class="project-container">
-            <img src="robotcar.png" class="project-image" alt="Bluetooth-Controlled Robot Car">
+            <img src="robotcar.png" alt="Bluetooth-Controlled Robot Car" loading="lazy">
             <div class="project-text">
                 <h3>Bluetooth-Controlled Robot Car</h3>
                 <p>Designed and developed a Bluetooth-controlled robot car using Arduino, integrating mechanical assembly, hardware wiring, and mobile app control.</p>
@@ -365,9 +215,8 @@
             </div>
         </div>
 
-        <!-- NEW Gantry System Project -->
         <div class="project-container">
-            <img src="gantry.png" class="project-image" alt="Toddler Drawing Gantry System">
+            <img src="gantry.png" alt="Toddler Drawing Gantry System" loading="lazy">
             <div class="project-text">
                 <h3>Toddler Drawing Gantry System | VexIQ, C++</h3>
                 <p>September 2025 – December 2025</p>
@@ -384,7 +233,7 @@
 <section id="awards">
     <h2>Awards</h2>
     <div class="awards-grid">
-        <div class="award-card"><img src="award1.png" alt="President’s Scholarship"><h3>Entrance Scholarship</h3><p>President’s Scholarship of Distinction (2025)</p></div>
+        <div class="award-card"><img src="award1.png" alt="Entrance Scholarship"><h3>Entrance Scholarship</h3><p>President’s Scholarship of Distinction (2025)</p></div>
         <div class="award-card"><img src="award2.png" alt="Governor General’s Medal"><h3>Governor General’s Academic Medal</h3><p>Top Average in Grade 12 (2025)</p></div>
         <div class="award-card"><img src="award3.png" alt="Lieutenant Governor Award"><h3>Lieutenant Governor’s Volunteer Award</h3><p>Most Volunteer Hours (2025)</p></div>
         <div class="award-card"><img src="award4.png" alt="Belleville Police Award"><h3>The Belleville Police Award</h3><p>Promoting Community Safety (2025)</p></div>
@@ -402,45 +251,57 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 My Portfolio</p>
+    <p>&copy; 2026 Austin Williams</p>
 </footer>
 
 <script>
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
     });
+});
 
-    // Scroll reveal
-    const sections = document.querySelectorAll('section');
-    const projectContainers = document.querySelectorAll('.project-container');
-    const awardCards = document.querySelectorAll('.award-card');
-
-    const revealOnScroll = () => {
-        const triggerBottom = window.innerHeight * 0.85;
-        [...sections, ...projectContainers, ...awardCards].forEach(el => {
-            if(el.getBoundingClientRect().top < triggerBottom) el.classList.add('visible');
-        });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-
-    // Theme toggle
-    const toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        document.getElementById('navbar').classList.toggle('light-mode');
-        localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+// IntersectionObserver for scroll reveal
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
     });
+}, { threshold:0.1 });
+document.querySelectorAll('section, .project-container, .award-card').forEach(el => observer.observe(el));
 
-    // Load theme from localStorage
-    if(localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-mode');
-        document.getElementById('navbar').classList.add('light-mode');
+// Theme toggle with emoji rotation
+const themeToggle = document.getElementById('themeToggle');
+const setTheme = (isLight) => {
+    document.body.classList.toggle('light-mode', isLight);
+    document.getElementById('navbar').classList.toggle('light-mode', isLight);
+    themeToggle.textContent = isLight ? '🌞' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+};
+setTheme(localStorage.getItem('theme') === 'light');
+themeToggle.addEventListener('click', () => {
+    themeToggle.style.transform = 'rotate(0deg)';
+    setTheme(!document.body.classList.contains('light-mode'));
+    setTimeout(() => { themeToggle.style.transform = 'rotate(360deg)'; }, 10);
+});
+
+// Dynamic title on scroll
+const sectionTitles = { home:'Austin Williams – Welcome', resume:'Austin Williams – Resume', projects:'Austin Williams – Projects', awards:'Austin Williams – Awards', certifications:'Austin Williams – Certifications' };
+const sections = document.querySelectorAll('header, section');
+const updateTitleOnScroll = () => {
+    const viewportMiddle = window.innerHeight / 2;
+    for(let section of sections){
+        const rect = section.getBoundingClientRect();
+        if(rect.top <= viewportMiddle && rect.bottom >= viewportMiddle){
+            const id = section.getAttribute('id');
+            if(sectionTitles[id]) document.title = sectionTitles[id];
+            break;
+        }
     }
+};
+window.addEventListener('scroll', updateTitleOnScroll);
+updateTitleOnScroll();
 </script>
 
 </body>
