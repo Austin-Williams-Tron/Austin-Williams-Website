@@ -8,6 +8,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1; /* above background, below content */
+    opacity: 0.45; /* more visible */
+    transition: background 0.4s, transform 0.4s;
+    will-change: transform, top, left;
+    filter: blur(6px); /* soft glow */
+    box-shadow: 0 0 20px rgba(0,229,255,0.6); /* glow */
+    
+	background: radial-gradient(
+	    circle at 30% 30%,
+	    rgba(255,255,255,0.25),
+	    rgba(0,229,255,0.15),
+	    rgba(0,229,255,0.05)
+	);
+}
+
 :root {
     --primary-color: #00e5ff;
     --bg-color: #000;
@@ -22,6 +42,7 @@ body.light-mode {
     --text-color: #333;
 }
 
+/* Reset */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
@@ -105,9 +126,80 @@ header {
     transition: background 0.4s, color 0.4s;
 }
 
-body.light-mode header { background: radial-gradient(circle,#e0f0ff,#fff); color: var(--primary-color); }
+body.light-mode header {
+    background: radial-gradient(circle,#e0f0ff,#fff);
+    color: var(--primary-color);
+}
 
 header h1 { font-size:3rem; text-shadow:0 0 20px var(--primary-color); }
+
+/* ---------- TITLE PAGE EFFECT ---------- */
+
+.hero-title {
+    font-size: 3rem;
+    text-shadow:
+        0 0 10px var(--primary-color),
+        0 0 25px rgba(0,229,255,0.6),
+        0 0 60px rgba(0,229,255,0.4);
+    animation: glowPulse 4s ease-in-out infinite;
+    position: relative;
+    display: inline-block;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow:
+            0 0 10px var(--primary-color),
+            0 0 25px rgba(0,229,255,0.6),
+            0 0 60px rgba(0,229,255,0.4);
+    }
+    50% {
+        text-shadow:
+            0 0 20px var(--primary-color),
+            0 0 45px rgba(0,229,255,0.8),
+            0 0 90px rgba(0,229,255,0.6);
+    }
+}
+
+/* Underline shimmer */
+.hero-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    from { background-position: -200% 0; }
+    to   { background-position: 200% 0; }
+}
+
+/* Subtitle fade-in */
+.hero-subtitle {
+	margin-top: 18px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: subtitleFade 1.2s ease forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes subtitleFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* SECTIONS */
 section {
@@ -147,7 +239,7 @@ p,li { color: var(--text-color); }
     gap: 60px;
     align-items: flex-start;
     padding: 15px;
-    background: #000; /* same as award-card */
+    background: var(--card-bg);
     border: 2px solid var(--primary-color);
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,229,255,0.3);
@@ -162,7 +254,7 @@ p,li { color: var(--text-color); }
 .projects-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* space BETWEEN project cards */
+    gap: 30px;
 }
 
 .projects-wrapper .project-container img {
@@ -177,30 +269,59 @@ p,li { color: var(--text-color); }
     box-shadow: 0 0 35px rgba(0,229,255,0.9);
 }
 
-.project-text h3, .project-text h4 {
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(0,229,255,0.7);
+.project-text h3, .project-text h4 { color: var(--primary-color); }
+.project-text p, .project-text ul, .project-text li { color: var(--text-color); }
+
+/* AWARDS & CERTIFICATIONS */
+.awards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); 
+    gap: 30px; 
+    margin-top: 30px; 
 }
 
-.project-text p, .project-text ul, .project-text li {
-    color: var(--text-color);
-}
-
-
-/* AWARDS */
-.awards-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:30px; margin-top:30px; }
 .award-card {
-    background:#000; border:2px solid var(--primary-color); border-radius:12px;
-    padding:15px; text-align:center;
-    box-shadow:0 0 20px rgba(0,229,255,0.3);
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,229,255,0.3);
     transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s, color 0.4s;
 }
-.award-card:hover { transform: translateY(-10px) scale(1.05); box-shadow:0 0 30px rgba(0,229,255,0.9),0 0 60px rgba(0,229,255,0.6); }
-.award-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px; box-shadow:0 0 12px rgba(0,229,255,0.4); }
+
+.award-card:hover { 
+    transform: translateY(-10px) scale(1.05); 
+    box-shadow: 0 0 30px rgba(0,229,255,0.9), 0 0 60px rgba(0,229,255,0.6); 
+}
+
+.award-card img { 
+    width: 100%; 
+    height: 160px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    margin-bottom: 12px; 
+    box-shadow: 0 0 12px rgba(0,229,255,0.4); 
+}
+
+.award-card h3, .award-card p { color: var(--text-color); }
 
 /* FOOTER */
-footer { background:#050505; text-align:center; padding:20px; color:var(--primary-color); box-shadow:0 0 15px rgba(0,229,255,0.3); transition: background 0.4s, color 0.4s; }
-body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow:0 0 15px rgba(0,0,0,0.1); }
+footer { 
+    background:#050505; 
+    text-align:center; 
+    padding:20px; 
+    color:var(--primary-color); 
+    box-shadow:0 0 15px rgba(0,229,255,0.3); 
+    transition: background 0.4s, color 0.4s; 
+}
+
+body.light-mode footer { 
+    background:#ddd; 
+    color:var(--primary-color); 
+    box-shadow:0 0 15px rgba(0,0,0,0.1); 
+}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -208,7 +329,16 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
     .projects-wrapper .project-container img { width:100%; max-width:400px; }
     header h1 { font-size:2.2rem; }
 }
+
+header, section, footer, nav {
+    position: relative;
+    z-index: 10;
+}
+
 </style>
+
+
+
 </head>
 
 <body>
@@ -228,8 +358,10 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
 
 <header id="home">
     <div>
-        <h1>Austin Williams</h1>
-        <p>Welcome! I'm a UWaterloo Mechatronics Engineering student seeking co-op experience in integrated hardware and software systems.</p>
+        <h1 class="hero-title">Austin Williams</h1>
+		<p class="hero-subtitle">
+		    Welcome! I'm a UWaterloo Mechatronics Engineering student seeking co-op experience in integrated hardware and software systems.
+		</p>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/austin-williams-mechatronics/" target="_blank" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
             <a href="mailto:a55willi@uwaterloo.ca" class="icon-circle"><i class="fas fa-envelope"></i></a>
@@ -291,7 +423,7 @@ body.light-mode footer { background:#ddd; color:var(--primary-color); box-shadow
 <section id="awards">
     <h2>Awards</h2>
     <div class="awards-grid">
-        <div class="award-card"><img src="President's Scholarship of Distinction.pdf'" alt="President's Scholarship of Distinction"><h3>Entrance Scholarship</h3><p>President’s Scholarship of Distinction (2025)</p></div>
+        <div class="award-card"><img src="President's Scholarship of Distinction.pdf" alt="President's Scholarship of Distinction"><h3>Entrance Scholarship</h3><p>President’s Scholarship of Distinction (2025)</p></div>
         <div class="award-card"><img src="Governal General.pdf" alt="Governal General Award"><h3>Governor General’s Academic Medal</h3><p>Top Average in Grade 12 (2025)</p></div>
         <div class="award-card"><img src="Lieutenant Governor.pdf" alt="Lieutenant Governor Award"><h3>Lieutenant Governor’s Volunteer Award</h3><p>Most Volunteer Hours (2025)</p></div>
         <div class="award-card"><img src="Belleville Police Award.pdf" alt="Belleville Police Award"><h3>The Belleville Police Award</h3><p>Promoting Community Safety (2025)</p></div>
@@ -380,6 +512,91 @@ const updateTitleOnScroll = () => {
 window.addEventListener('scroll', updateTitleOnScroll);
 updateTitleOnScroll();
 </script>
+
+<script>
+// Floating bubbles
+const bubbleCount = 25;
+const bubbles = [];
+
+for (let i = 0; i < bubbleCount; i++) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+
+    const size = Math.random() * 110 + 40;
+    bubble.style.width = bubble.style.height = size + 'px';
+
+    bubble.x = Math.random() * window.innerWidth;
+    bubble.y = Math.random() * window.innerHeight;
+
+    bubble.vy = -(Math.random() * 0.3 + 0.1);
+    bubble.vx = (Math.random() - 0.5) * 0.3;
+
+    bubble.scale = Math.random() * 0.8 + 0.5;
+    bubble.pulseSpeed = Math.random() * 0.01 + 0.005;
+    bubble.pulseDir = 1;
+
+    bubble.style.transform = `scale(${bubble.scale})`;
+
+    bubble.style.background = document.body.classList.contains('light-mode')
+        ? 'rgba(0,119,204,0.15)'
+        : 'rgba(0,229,255,0.15)';
+
+    document.body.appendChild(bubble);
+    bubbles.push(bubble);
+}
+
+function animateBubbles() {
+    bubbles.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+
+        if (b.y + b.offsetHeight < 0) b.y = window.innerHeight;
+        if (b.x < -50) b.x = window.innerWidth;
+        if (b.x > window.innerWidth + 50) b.x = -b.offsetWidth;
+
+        b.scale += b.pulseSpeed * b.pulseDir;
+        if (b.scale > 1.2 || b.scale < 0.5) b.pulseDir *= -1;
+
+        b.style.left = b.x + 'px';
+        b.style.top = b.y + 'px';
+        b.style.transform = `scale(${b.scale})`;
+    });
+    requestAnimationFrame(animateBubbles);
+}
+animateBubbles();
+
+themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('light-mode');
+    bubbles.forEach(b => {
+        b.style.background = isLight
+            ? 'rgba(0,119,204,0.15)'
+            : 'rgba(0,229,255,0.15)';
+    });
+});
+
+window.addEventListener('resize', () => {
+    bubbles.forEach(b => {
+        b.x = Math.min(b.x, window.innerWidth - b.offsetWidth);
+        b.y = Math.min(b.y, window.innerHeight - b.offsetHeight);
+    });
+});
+</script>
+
+<script>
+const title = document.querySelector('.hero-title');
+const text = title.textContent;
+title.textContent = "";
+
+let i = 0;
+function typeTitle() {
+    if (i < text.length) {
+        title.textContent += text.charAt(i++);
+        requestAnimationFrame(typeTitle);
+    }
+}
+window.addEventListener('load', typeTitle);
+</script>
+
 
 </body>
 </html>
